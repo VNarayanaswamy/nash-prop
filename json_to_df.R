@@ -7,7 +7,7 @@ library(stringr)
 library(jsonlite)
 library(dplyr)
 library(RPostgreSQL)
-
+require("sql_wrappers.R")
 
 
 
@@ -88,7 +88,6 @@ default_prop_names <- c(  "location", "mailing_address", "legal_description",
 
 get_prop_records <- function(records) {
   prop_table_1 <- fromJSON(records[1])
-  #prop_table_2 <- fromJSON(records[2])
   sales_table <- fromJSON(records[3])
   apprs_table <- fromJSON(records[4])
   
@@ -100,10 +99,6 @@ get_prop_records <- function(records) {
     vals_1 <- c(vals_1[1:12], "NA", vals_1[13:29])
     names_vals_1 <- default_prop_names
   }
-  #vals_2 <- get_values(records_table_2)
-  #names_vals_2 <- get_col_names(records_table_2)
-  #prop_vals <- c(vals_1, vals_2)
-  #names(prop_vals) <- c(names_vals_1, names_vals_2)
   prop_vals <- data.frame(t(vals_1))
   colnames(prop_vals) <- names_vals_1
   
@@ -119,13 +114,7 @@ get_prop_records <- function(records) {
 }
 
 
-
-
-cleaned_records <- scrapped_text_to_tables(prop_records)
-
-
-
-write_records_to_database <- function(cleaned_records){
+write_records_to_database <- function(cleaned_records, con){
   properties <- cleaned_records[[1]]
   
   df <- mutate_each(properties, funs(as.character))
@@ -158,9 +147,11 @@ write_records_to_database <- function(cleaned_records){
 
 
 ### load in all records
+connection <- get_connection(get_connection_settings())
+
 for (file in list.files("./")) {
     load(file)
     clean_records <- scrapped_text_to_tables(prop_records)
-    write_records_to_database(clean_records)
+    write_records_to_database(clean_records, connection)
 }
 
