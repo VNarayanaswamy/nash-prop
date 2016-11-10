@@ -1,4 +1,4 @@
-## What's happening to Nashville? 
+# What's happening to Nashville? 
 
 Ask any Nashvillian how the city is changing and they will tell you that it is growing at a breakneck speed. The skyline is peppered with cranes and entire blocks are being knocked down and rebuilt.  My friends who are trying to buy houses speak with the despondent tone of hardened war vets. To have your offer even glanced at you better make it on the first day of listing and be over asking by at least $10K.  Don't even bother with East Nashville or Sylvan Park...  I wanted to see if the hype matches reality and if this really is a time like nothing the city has seen before.  
 
@@ -55,7 +55,7 @@ sudo yum install libpng-devel
 sudo yum install libjpeg-devel
 ```
 
-# Time to scrape
+## Time to scrape
 Now I can run my scrapping [function](https://github.com/davidcearl/nash-prop/blob/master/prop_scraper.R) on the 250,000+ properties in Davidson County
 ```r
 #takes a range of numbers and returns a nested json of property records
@@ -109,11 +109,11 @@ get_prop_rec <- function(num_val) {
 }
 ```
 
-# Getting the data into a usable format
+## Getting the data into a usable format
 
 I ultimately want to interactively plot the data through time.  Each property has records of every sale with some going back to the 1800s! After [cleaning up](https://github.com/davidcearl/nash-prop/blob/master/json_to_df.R) the data I decided to split things up into three tables.  One will be a table with general info about property such as location and square feet.  Then I'll have a table for sales history and one for appraisal history. Since the property assessors hasn't assingned robust ids to the properties I had to generate them so I can reliably link tables.  I also decided to store the cleaned data in a postgresql database hosted on AWS RDS
 
-# Building an interactive web app with shiny
+## Building an interactive web app with shiny
 
 Shiny lets you quickly build interactive apps and offers [hosting](http://www.shinyapps.io/) services or you can run your own shiny server.  The two required parts of a shiny app are the ui function and the server function, but in this case I also needed to write a few [functions](https://github.com/davidcearl/nash-prop/blob/master/shiny-app/shiny_sql.R) so my shiny app can connect and query my database.  I want to be able to select a date range and view basic statistics for different parts of the city and view the results on a map of the county. The ui function can handle getting the user input and the server function will query the database based on the input and render the plot with ggplot
 
