@@ -1,13 +1,3 @@
----
-title: "Visualizing Nashville's Real Estate Market"
-author: "David Earl"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## What's happening to Nashville? 
 
 Ask any Nashvillian how the city is changing and they will tell you that it is growing at a breakneck speed. The skyline is peppered with cranes and entire blocks are being knocked down and rebuilt.  My friends who are trying to buy houses speak with the despondent tone of hardened war vets. To have your offer even glanced at you better make it on the first day of listing and be over asking by at least $10K.  Don't even bother with East Nashville or Sylvan Park...  I wanted to see if the hype matches reality and if this really is a time like nothing the city has seen before.  
