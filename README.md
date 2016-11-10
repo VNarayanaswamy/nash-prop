@@ -56,7 +56,7 @@ sudo yum install libjpeg-devel
 ```
 
 # Time to scrape
-Now I can run my scrapping function on the 250,000+ properties in Davidson County
+Now I can run my scrapping [function](https://github.com/davidcearl/nash-prop/blob/master/prop_scraper.R) on the 250,000+ properties in Davidson County
 ```r
 #takes a range of numbers and returns a nested json of property records
 #each property has three associated pages
