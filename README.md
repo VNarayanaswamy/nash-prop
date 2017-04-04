@@ -4,7 +4,7 @@ Ask any Nashvillian how the city is changing and they will tell you that it is g
 
 ## tl;dr
 
-Finished product [here](http://ec2-52-87-236-113.compute-1.amazonaws.com:3838/nash_prop)
+Finished product [here](http://ec2-54-91-203-90.compute-1.amazonaws.com:3838/nash_prop)
 ![alt text](https://github.com/davidcearl/nash-prop/raw/master/example_screenshot.png "example screenshot")
 
 ## To the Data!
@@ -166,4 +166,4 @@ shinyServer(function(input, output) {
 
 ## Time to explore!
 
-When did the number of sales in East Nashville start to explode?  Are the most expensive parts of town in 2014 the same as the ones in 1994? What neighborhoods were most affected by the 2008 bubble? Take a look for [yourself!](http://ec2-52-87-236-113.compute-1.amazonaws.com:3838/nash_prop) 
+When did the number of sales in East Nashville start to explode?  Are the most expensive parts of town in 2014 the same as the ones in 1994? What neighborhoods were most affected by the 2008 bubble? Take a look for [yourself!](http://ec2-54-91-203-90.compute-1.amazonaws.com:3838/nash_prop) 
