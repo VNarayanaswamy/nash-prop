@@ -1,4 +1,5 @@
 # ------------------------------------------------------------------------------
+
 dfs_from_json <- function(json) {
   df_list <- jsonlite::fromJSON(json)
   prop_df <- cbind(df_list$Property, df_list$Building)
@@ -75,12 +76,3 @@ mutate_apprs <- function(df) {
 write_db <- function(con, sql_tbl, df){
   RPostgreSQL::dbWriteTable(con, sql_tbl, df, row.names=F, append=T)
 }
-
-# ------------------------------------------------------------------------------
-
-
-
-
-
-
-

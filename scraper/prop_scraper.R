@@ -6,7 +6,6 @@ get_li <- function(parsed_card) {
   return(unlist(li[11:15]))
 }
 
-# function for turning li to dataframe
 li_to_df <- function(li) {
   li <-stringr::str_split(li, ': ', simplify = T)
   df <- data.frame(matrix(NA_character_, nrow = 1, ncol = dim(li)[1]),
@@ -17,11 +16,10 @@ li_to_df <- function(li) {
 }
 
 get_lat_lng <- function(parsed_card) {
-  lat_lng_href <- unlist(
-    XML::xpathApply(parsed_card,
-                    "//a[@data-maptype]", 
-                    XML::xmlGetAttr, 
-                    "href"))
+  lat_lng_href <- unlist(XML::xpathApply(parsed_card,
+                                         "//a[@data-maptype]", 
+                                         XML::xmlGetAttr, 
+                                         "href"))
   lat <- stringr::str_sub(lat_lng_href, -26, -16)
   lng <- stringr::str_sub(lat_lng_href, -12, -1)
   return(c('lat' = lat, 'lng' = lng))

@@ -1,5 +1,4 @@
-require(RPostgreSQL)
-
+#-------------------------------------------------------------------------------
 
 get_connection_settings <- function() {
   con_settings <- Sys.getenv(c(drv = 'DB_DRIVER',
@@ -12,12 +11,12 @@ get_connection_settings <- function() {
 }
 
 get_connection <- function(con_settings){
-  connection <- dbConnect(drv = con_settings[['drv']],
-                          dbname = con_settings[['dbname']],
-                          host = con_settings[['host']],
-                          port = con_settings[['port']],
-                          user = con_settings[['user']],
-                          password = con_settings[['password']])
+  connection <- RPostgreSQL::dbConnect(drv = con_settings[['drv']],
+                                       dbname = con_settings[['dbname']],
+                                       host = con_settings[['host']],
+                                       port = con_settings[['port']],
+                                       user = con_settings[['user']],
+                                       password = con_settings[['password']])
   return(connection)
 }
 

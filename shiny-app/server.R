@@ -13,15 +13,11 @@ shinyServer(function(input, output) {
     sum_function <- isolate(input$sum_func)
     center_date <- isolate(input$selected_date)
     per <- isolate(input$period)
-    
     if (per == 'month'){
       timespan <- 15
     }
-    
     start_date <- center_date - timespan
     end_date <- center_date + timespan
-    
-    
     df <- shiny_get_df_from_db(c(paste0("'",
                                         start_date,
                                         "'"),
@@ -39,6 +35,4 @@ shinyServer(function(input, output) {
       scale_fill_gradientn(colours = c('purple', 'red', 'yellow' )) 
     
   })
-  
-  
 })
