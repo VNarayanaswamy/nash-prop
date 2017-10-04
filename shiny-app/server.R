@@ -22,12 +22,21 @@ shinyServer(function(input, output) {
     end_date <- center_date + timespan
     
     
-    df <- shiny_get_df_from_db(c(paste0("'",start_date,"'"), paste0("'",end_date,"'")))
+    df <- shiny_get_df_from_db(c(paste0("'",
+                                        start_date,
+                                        "'"),
+                                 paste0("'",
+                                        end_date,
+                                        "'")))
     plot_nash <- df[-which(is.na(df$lat) & is.na(df$lng)),-1]    
     map_nash + 
       coord_cartesian() +
-      stat_summary_2d(data = filter(plot_nash, sale_price < 1e6 & sale_price > 50000), aes(x = lng, y = lat, z = sale_price), fun = sum_function, binwidth = c(0.01,0.01), alpha = 0.6, geom = 'raster', interpolate = T) +
-      scale_fill_gradientn(colours = c('purple', 'red', 'yellow' )) #, limits = c(0, 100))
+      stat_summary_2d(data = filter(plot_nash,
+                                    sale_price < 1e6 & sale_price > 50000),
+                      aes(x = lng, y = lat, z = sale_price),
+                      fun = sum_function, binwidth = c(0.01,0.01),
+                      alpha = 0.6, geom = 'raster', interpolate = T) +
+      scale_fill_gradientn(colours = c('purple', 'red', 'yellow' )) 
     
   })
   
